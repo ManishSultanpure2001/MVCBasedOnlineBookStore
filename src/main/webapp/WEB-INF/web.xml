@@ -1,0 +1,47 @@
+
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+   
+     <servlet>
+        <servlet-name>RegistrationMVC</servlet-name>
+        <servlet-class>com.onlinebookstore.controller.RegistrationMVC</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>UserLoginMVC</servlet-name>
+        <servlet-class>com.onlinebookstore.controller.UserLoginMVC</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>AddBookController</servlet-name>
+        <servlet-class>com.onlinebookstore.controller.AddBookController</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>AdminViewBookController</servlet-name>
+        <servlet-class>com.onlinebookstore.controller.AdminViewBookController</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>DeleteBookServletController</servlet-name>
+        <servlet-class>com.onlinebookstore.controller.DeleteBookServletController</servlet-class>
+    </servlet>
+   <servlet-mapping>
+        <servlet-name>RegistrationMVC</servlet-name>
+        <url-pattern>/RegistrationMVC</url-pattern>
+    </servlet-mapping>
+   <servlet-mapping>
+        <servlet-name>UserLoginMVC</servlet-name>
+        <url-pattern>/UserLoginMVC</url-pattern>
+    </servlet-mapping>
+   <servlet-mapping>
+        <servlet-name>AddBookController</servlet-name>
+        <url-pattern>/AddBookController</url-pattern>
+    </servlet-mapping>
+   <servlet-mapping>
+        <servlet-name>AdminViewBookController</servlet-name>
+        <url-pattern>/AdminViewBookController</url-pattern>
+    </servlet-mapping>
+   <servlet-mapping>
+        <servlet-name>DeleteBookServletController</servlet-name>
+        <url-pattern>/DeleteBookServletController</url-pattern>
+    </servlet-mapping>
+   
+    
+</web-app>
+ 

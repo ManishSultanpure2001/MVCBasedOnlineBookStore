@@ -1,0 +1,112 @@
+/*  Home and Profile Page of user Css*/
+.HomeButton, .profileButton {
+	width: 200px;
+	height: 50px;
+	background: linear-gradient(red, black);
+	color: white;
+	margin-top: 10px;
+	font-size: 25px;
+	border-radius: 12px;
+	border-color: white;
+}
+
+.HomeButton:hover, .profileButton:hover {
+	background: linear-gradient(to right, red, black);
+}
+#successHeading{
+	background-color: green;
+	color: white;
+}
+#failHeading{
+	background-color: red;
+	color: white;
+}
+#heading {
+	text-align: center;
+	margin-right: 400px;
+	margin-top: 40px;
+	color: #F4A896;
+}
+
+.homeLabel, .profileLabel {
+	font-style: italic;
+	margin-left: 30px;
+	margin-top: 40px;
+}
+
+#peragraphDiv {
+	margin-top: 40px;
+	color: white;
+	font-size: 18px;
+	font-weight: bold;
+	display: inline-block;
+}
+
+#AuthorName {
+	color: red;
+	font-size: 20px;
+	font-weight: bold;
+}
+/*  User Login*/
+ #mymenu {
+	  background-color: rgba(0, 0, 0, 0.7);  
+	color: white;
+	text-align: right;
+} 
+
+body {
+	background-image: url('Image/BackgroundOfBook.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+#mymenu ul li {
+	display: inline-block;
+	padding: 25px;
+	text-decoration: none;
+	color: white;
+}
+
+.AddBookHeading {
+	/*margin-top: 200px;  */
+	
+}
+
+#mymenu ul li:hover {
+	background-color: red;
+	text-decoration: none;
+	color: white;
+}
+
+.UserAdminParagraph {
+	background-color: red;
+}
+
+#heading {
+	/*margin-top: 150px;  */
+	
+}
+
+table {
+	background-image:
+		url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
+	background-color: rgba(0, 0, 0, 0.7);
+	color: white;
+	box-shadow: 10px 10px 10px black;
+}
+
+#data {
+	margin-top: 150px;
+}
+
+.B {
+	border-radius: 25px;
+	width: 90px;
+	height: 35px;
+	background: linear-gradient(red, black);
+	color: white;
+}
+
+.B:hover {
+	background: linear-gradient(to right, red, black);
+}
