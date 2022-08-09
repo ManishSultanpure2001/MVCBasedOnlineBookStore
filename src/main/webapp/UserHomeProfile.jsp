@@ -1,4 +1,4 @@
- 
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -16,13 +16,13 @@
 </head>
 <body class="container" id="USerAdminPage">
 	<div class="row" id="heading">
-		 
+
 		<h2 id="mainHeader">Welcome User to Online Book Store portal</h2>
 	</div>
 
 	<div class="row" id="descriptionHeading">
 		<div class="col-6">
-			<form action="SearchBook.jsp">
+			<form action="SearchBuyBook.jsp">
 
 				<h1 class="homeLabel">Buy Book</h1>
 				<div id="peragraphDiv">
@@ -36,7 +36,7 @@
 			</form>
 		</div>
 		<div class="col-6">
-			<form action="UserBuyBookData.jsp">
+			<form action="UserBuyHistoryServlet">
 				<h1 class="profileLabel">Profile</h1>
 
 				<div id="peragraphDiv">

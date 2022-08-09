@@ -1,48 +1,49 @@
 package com.onlinebookstore.model;
 
 import javax.mail.Part;
+
 public class BookdetailsDao {
-private String bookName,bookPrice,authorName;
-private javax.servlet.http.Part bookPDF,bookImage;
- 
-public String getBookName() {
-	return bookName;
-}
+	private String bookName, bookPrice, authorName;
+	private javax.servlet.http.Part bookPDF, bookImage;
 
-public String setBookName(String bookName) {
-	return this.bookName = bookName;
-}
+	public String getBookName() {
+		return bookName;
+	}
 
-public javax.servlet.http.Part getBookPDF() {
-	return (javax.servlet.http.Part) bookPDF;
-}
+	public String setBookName(String bookName) {
+		return this.bookName = bookName;
+	}
 
-public void setBookPDF(javax.servlet.http.Part part) {
-	this.bookPDF = (javax.servlet.http.Part) part;
-}
+	public javax.servlet.http.Part getBookPDF() {
+		return (javax.servlet.http.Part) bookPDF;
+	}
 
-public javax.servlet.http.Part getBookImage() {
-	return bookImage;
-}
+	public void setBookPDF(javax.servlet.http.Part part) {
+		this.bookPDF = (javax.servlet.http.Part) part;
+	}
 
-public void setBookImage(javax.servlet.http.Part part) {
-	this.bookImage = (javax.servlet.http.Part) part;
-}
+	public javax.servlet.http.Part getBookImage() {
+		return bookImage;
+	}
 
-public String getBookPrice() {
-	return bookPrice;
-}
+	public void setBookImage(javax.servlet.http.Part part) {
+		this.bookImage = (javax.servlet.http.Part) part;
+	}
 
-public void setBookPrice(String bookPrice) {
-	this.bookPrice = bookPrice;
-}
+	public String getBookPrice() {
+		return bookPrice;
+	}
 
-public String getAuthorName() {
-	return authorName;
-}
+	public void setBookPrice(String bookPrice) {
+		this.bookPrice = bookPrice;
+	}
 
-public void setAuthorName(String authorName) {
-	this.authorName = authorName;
-}
+	public String getAuthorName() {
+		return authorName;
+	}
+
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
+	}
 
 }

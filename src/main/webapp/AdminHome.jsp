@@ -9,8 +9,7 @@
 <title>Insert title here</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
->
+	rel="stylesheet">
 
 </head>
 <body class="container" id="USerAdminPage">
@@ -24,7 +23,7 @@
 		<ul>
 			<li><a href="AddBook.jsp">Add Book</a></li>
 			<li><a href="AdminViewBookController">View Book</a></li>
-			<li><a href="UpdateBook.jsp">Update Book Detail</a></li>
+			<li><a href="UpdateBook">Update Book Detail</a></li>
 			<li><a href="DeleteBook.jsp">Delete Book</a></li>
 			<li><a href='Login.jsp'>Logout</a></li>
 		</ul>

@@ -40,11 +40,11 @@
 			<ul>
 				<li><a href="AdminHome.jsp">Home Page</a></li>
 				<li><a href="AdminViewBookController">View Book</a></li>
-				<li><a href=UpdateBook.jsp>Update Book Detail</a></li>
+				<li><a href=UpdateBook>Update Book Detail</a></li>
 				<li><a href="DeleteBook.jsp">Delete Book</a></li>
 				<li><a href='Login.jsp'>Logout</a></li>
 			</ul>
-		</div> 
+		</div>
 		<center>
 
 			<form action="AddBookController" enctype='multipart/form-data'

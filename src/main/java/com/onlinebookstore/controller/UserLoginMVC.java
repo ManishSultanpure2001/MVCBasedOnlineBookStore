@@ -10,42 +10,45 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 import com.online.bookstore.*;
 import com.onlinebookstore.model.RegistrationDao;
- 
+import com.onlinebookstore.model.UserEmail;
 
 /**
  * Servlet implementation class UserLoginMVC
  */
- 
+
 public class UserLoginMVC extends HttpServlet {
-	 
 
-		protected void doPost(HttpServletRequest request, HttpServletResponse response)
-				throws ServletException, IOException {
-			response.getWriter().append("Served at: ").append(request.getContextPath());
-			RegistrationDao registrationDao=new RegistrationDao();
-			 registrationDao.setUserEmail(request.getParameter("loginUserEmail"));
-			 registrationDao.setUserPassword(request.getParameter("loginUserPassword"));
-			try {
-				Connection con = DatabaseConnectivity.dbConnection();
-				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery(
-						"Select * from registration where email='" + registrationDao.getUserEmail() + "' and password='" + registrationDao.getUserPassword() + "'");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RegistrationDao registrationDao = new RegistrationDao();
+		registrationDao.setUserEmail(request.getParameter("loginUserEmail"));
+		registrationDao.setUserPassword(request.getParameter("loginUserPassword"));
+		try {
+			Connection con = DatabaseConnectivity.dbConnection();
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery("Select * from registration where email='" + registrationDao.getUserEmail()
+					+ "' and password='" + registrationDao.getUserPassword() + "'");
 
-				if (rs.next()) {
+			if (rs.next()) {
 
-					if (rs.getString(2).equals(registrationDao.getUserEmail()) && rs.getString(3).equals("Admin")
-							&& rs.getString(4).equals(registrationDao.getUserPassword())) {
-						response.sendRedirect("AdminHome.jsp");
-					} else {
-						request.setAttribute("userEmail", registrationDao.getUserEmail());
-						request.getRequestDispatcher("UserHomeProfile.jsp").forward(request, response);
-					}
+				if (rs.getString(2).equals(registrationDao.getUserEmail()) && rs.getString(3).equals("Admin")
+						&& rs.getString(4).equals(registrationDao.getUserPassword())) {
+
+					response.sendRedirect("AdminHome.jsp");
 				} else {
-					response.sendRedirect("Login.jsp");
+					UserEmail userEmail2 = new UserEmail();
+					userEmail2.setUserEmail(registrationDao.getUserEmail());
+					System.out.print("UserEmail= " + userEmail2.getUserEmail());
+					request.setAttribute("userEmail", registrationDao.getUserEmail());
+					request.getRequestDispatcher("UserHomeProfile.jsp").forward(request, response);
 				}
-				con.close();
-			} catch (Exception e) {
-				e.printStackTrace();
+			} else {
+				response.sendRedirect("Login.jsp");
 			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
+}

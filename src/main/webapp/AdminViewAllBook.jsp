@@ -1,7 +1,8 @@
+<%@page import="com.onlinebookstore.controller.UpdateBook"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@page import="com.onlinebookstore.model.Book" %>
-	<%@page import="java.util.ArrayList" %>
+<%@page import="com.onlinebookstore.model.Book"%>
+<%@page import="java.util.ArrayList"%>
 <html>
 <head>
 <link rel='stylesheet' href='MainBookStoreCss.css'>
@@ -17,7 +18,7 @@
 
 				<li><a href='AdminHome.jsp'>Home Page</a></li>
 				<li><a href='AddBook.jsp'>Add Book</a></li>
-				<li><a href='UpdateBook.jsp'>Update Book Detail</a></li>
+				<li><a href='UpdateBook'>Update Book Detail</a></li>
 				<li><a href='DeleteBook.jsp'>Delete Book</a></li>
 				<li><a href='Login.jsp'>Logout</a></li>
 			</ul>
@@ -32,17 +33,20 @@
 					<td>BookAuthor</td>
 				</tr>
 				<%
-				ArrayList<Book> list=(ArrayList<Book>)request.getAttribute("list");
-				for(Book book:list ) {
+				ArrayList<Book> list = (ArrayList<Book>) request.getAttribute("list");
+				for (Book book : list) {
 				%>
 				<tr>
-					<td><%= book.getBookName() %> </td>
-					<td><%= book.getBookPDF() %> </td>
-					<td><%= book.getBookImage() %> </td>
-					<td><%= book.getBookPrice()  %></td>
-					<td><%= book.getBookAuthor() %> </td>
+					<td><%=book.getBookName()%></td>
+					<td><%=book.getBookPDF()%></td>
+					<td><img src="Image\\<%=book.getBookImage()%>" width='50'
+						height='50'></td>
+					<td><%=book.getBookPrice()%></td>
+					<td><%=book.getBookAuthor()%></td>
 				</tr>
-				<%} %>
+				<%
+				}
+				%>
 			</table>
 		</center>
 	</div>

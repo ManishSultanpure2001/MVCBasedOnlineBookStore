@@ -21,6 +21,22 @@
         <servlet-name>DeleteBookServletController</servlet-name>
         <servlet-class>com.onlinebookstore.controller.DeleteBookServletController</servlet-class>
     </servlet>
+     <servlet>
+        <servlet-name>UpdateBook</servlet-name>
+        <servlet-class>com.onlinebookstore.controller.UpdateBook</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>SearchBookResultServlet</servlet-name>
+        <servlet-class>com.onlinebookstore.controller.SearchBookResultServlet</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>SuccessFullPerches</servlet-name>
+        <servlet-class>com.onlinebookstore.controller.SuccessFullPerches</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>UserBuyHistoryServlet</servlet-name>
+        <servlet-class>com.onlinebookstore.controller.UserBuyHistoryServlet</servlet-class>
+    </servlet>
    <servlet-mapping>
         <servlet-name>RegistrationMVC</servlet-name>
         <url-pattern>/RegistrationMVC</url-pattern>
@@ -40,6 +56,22 @@
    <servlet-mapping>
         <servlet-name>DeleteBookServletController</servlet-name>
         <url-pattern>/DeleteBookServletController</url-pattern>
+    </servlet-mapping>
+   <servlet-mapping>
+        <servlet-name>UpdateBook</servlet-name>
+        <url-pattern>/UpdateBook</url-pattern>
+    </servlet-mapping>
+   <servlet-mapping>
+        <servlet-name>SearchBookResultServlet</servlet-name>
+        <url-pattern>/SearchBookResultServlet</url-pattern>
+    </servlet-mapping>
+   <servlet-mapping>
+        <servlet-name>SuccessFullPerches</servlet-name>
+        <url-pattern>/SuccessFullPerches</url-pattern>
+    </servlet-mapping>
+   <servlet-mapping>
+        <servlet-name>UserBuyHistoryServlet</servlet-name>
+        <url-pattern>/UserBuyHistoryServlet</url-pattern>
     </servlet-mapping>
    
     

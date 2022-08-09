@@ -10,7 +10,7 @@
 	<div id="mymenu">
 		<ul>
 			<li><a href="Login.jsp">Login</a></li>
-			<li><a href="RegisTration.jsp">Registration</a></li>
+			<li><a href="RegisTraion.jsp">Registration</a></li>
 		</ul>
 	</div>
 	<div id="data">

@@ -1,4 +1,5 @@
 package com.onlinebookstore.controller;
+
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
@@ -21,18 +22,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.online.bookstore.DatabaseConnectivity;
 import com.onlinebookstore.model.RegistrationDao;
- 
+
 public class RegistrationMVC extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		RegistrationDao registrationDao=new RegistrationDao();
+		RegistrationDao registrationDao = new RegistrationDao();
 		registrationDao.setUserName(request.getParameter("UserName"));
 		registrationDao.setUserEmail(request.getParameter("UserEmail"));
 		registrationDao.setUserRole(request.getParameter("UserRole"));
 		registrationDao.setUserPassword(request.getParameter("UserPassword"));
-				String queryString = "Insert into registration values(?,?,?,?)";
+		String queryString = "Insert into registration values(?,?,?,?)";
 		try {
 			Connection con = DatabaseConnectivity.dbConnection();
 			PreparedStatement preparedStatement = con.prepareStatement(queryString);
@@ -46,7 +47,7 @@ public class RegistrationMVC extends HttpServlet {
 						+ "]Thank you for completing your registration with [Webkorps]This email serves as a confirmation that your account is activated and that you are officially a part of the [Online Book Store] family Enjoy",
 						registrationDao.getUserEmail());
 				System.out.print("Success");
-				request.setAttribute("registrationObject",registrationDao);
+				request.setAttribute("registrationObject", registrationDao);
 				response.sendRedirect("Login.jsp");
 			} else {
 				response.sendRedirect("RegistrationMVC.jsp");
@@ -67,6 +68,7 @@ public class RegistrationMVC extends HttpServlet {
 		sendAttachment(message, subject, userEmail, from);
 
 	} // This is responsible to send the message with attachment
+
 	private static void sendAttachment(String message, String subject, String to, String from) {
 		// Variable for gmail.
 		String host = "smtp.gmail.com"; // get the System properties
@@ -115,8 +117,7 @@ public class RegistrationMVC extends HttpServlet {
 				mimeMultipart.addBodyPart(textMime);
 				mimeMultipart.addBodyPart(fileMime);
 
-			} 
-			catch (Exception e) {
+			} catch (Exception e) {
 				System.out.print("First");
 				e.printStackTrace();
 			}
