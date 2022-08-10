@@ -15,7 +15,7 @@
 	</div>
 	<div id="data">
 		<center>
-			<form action="RegistrationMVC">
+			<form action="RegistrationController">
 				<table cellpadding="15px">
 					<tr>
 						<td>Enter name</td>

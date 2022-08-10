@@ -1,16 +1,23 @@
-package com.onlinebookstore.model;
+package com.bookstore.entity;
+
+import javax.management.loading.PrivateClassLoader;
 
 public class Book {
 	private String bookName, bookPDF, bookImage, bookPrice, bookAuthor;
-
-	public String getBookName() {
-		return bookName;
+	private String selectedItem;
+	public void setSelectedItem(String selectedItem) {
+		this.selectedItem = selectedItem;
 	}
-
+	public String getSelectedItem() {
+		return selectedItem;
+	}
+	
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
-
+	public String getBookName() {
+		return bookName;
+	}
 	public String getBookPDF() {
 		return bookPDF;
 	}

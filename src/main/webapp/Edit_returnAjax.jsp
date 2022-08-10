@@ -1,12 +1,12 @@
-<%@page import="com.onlinebookstore.model.Book"%>
+<%@page import="com.bookstore.entity.Book"%>
 <%@page import="java.util.*"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="com.online.bookstore.*"%>
+<%@page import="com.bookstore.util.*"%>
 
-<%@ page import="com.online.bookstore.DatabaseConnectivity"%>
+<%@ page import="com.bookstore.util.DatabaseConnectivity"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
 Book book = new Book();

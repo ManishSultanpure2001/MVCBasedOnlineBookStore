@@ -1,5 +1,4 @@
-package com.onlinebookstore.controller;
-
+package com.bookstore.util;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
@@ -20,45 +19,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.online.bookstore.DatabaseConnectivity;
-import com.onlinebookstore.model.RegistrationDao;
+import com.bookstore.util.DatabaseConnectivity;
+import com.onlinebookstore.model.BookModel;
+import com.bookstore.entity.RegistrationDao;
 
-public class RegistrationMVC extends HttpServlet {
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		RegistrationDao registrationDao = new RegistrationDao();
-		registrationDao.setUserName(request.getParameter("UserName"));
-		registrationDao.setUserEmail(request.getParameter("UserEmail"));
-		registrationDao.setUserRole(request.getParameter("UserRole"));
-		registrationDao.setUserPassword(request.getParameter("UserPassword"));
-		String queryString = "Insert into registration values(?,?,?,?)";
-		try {
-			Connection con = DatabaseConnectivity.dbConnection();
-			PreparedStatement preparedStatement = con.prepareStatement(queryString);
-			preparedStatement.setString(1, registrationDao.getUserName());
-			preparedStatement.setString(2, registrationDao.getUserEmail());
-			preparedStatement.setString(3, registrationDao.getUserRole());
-			preparedStatement.setString(4, registrationDao.getUserPassword());
-			int insertResponse = preparedStatement.executeUpdate();
-			if (insertResponse > 0) {
-				this.emailSend("Dear [" + registrationDao.getUserName()
-						+ "]Thank you for completing your registration with [Webkorps]This email serves as a confirmation that your account is activated and that you are officially a part of the [Online Book Store] family Enjoy",
-						registrationDao.getUserEmail());
-				System.out.print("Success");
-				request.setAttribute("registrationObject", registrationDao);
-				response.sendRedirect("Login.jsp");
-			} else {
-				response.sendRedirect("RegistrationMVC.jsp");
-				System.out.print(" not Success");
-			}
-			con.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
+public class EmailService extends HttpServlet {
 
 	public static void emailSend(String message, String userEmail) {
 		System.out.println("Preparing to send message");
@@ -118,15 +83,14 @@ public class RegistrationMVC extends HttpServlet {
 				mimeMultipart.addBodyPart(fileMime);
 
 			} catch (Exception e) {
-				System.out.print("First");
+				
 				e.printStackTrace();
 			}
 			mimeMessage.setContent(mimeMultipart);
 			// Step 3:- Send the message using Transport Class
 			Transport.send(mimeMessage);
 			System.out.println("Success Fully Send");
-		} catch (Exception e) { // TODO: handle exception
-			System.out.print("Second");
+		} catch (Exception e) { 
 			e.printStackTrace();
 
 		}

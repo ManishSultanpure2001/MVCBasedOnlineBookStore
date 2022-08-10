@@ -1,7 +1,7 @@
 <%@page import="com.onlinebookstore.controller.UpdateBook"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="com.onlinebookstore.model.Book"%>
+<%@page import="com.bookstore.entity.Book"%>
 <%@page import="java.util.ArrayList"%>
 <html>
 <head>

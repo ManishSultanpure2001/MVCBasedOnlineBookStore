@@ -1,4 +1,4 @@
-package com.onlinebookstore.model;
+package com.bookstore.entity;
 
 public class RegistrationDao {
 	private String userName, userEmail, userRole, userPassword;

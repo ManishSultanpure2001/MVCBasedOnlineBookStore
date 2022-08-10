@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="com.onlinebookstore.model.*"%>
+<%@ page import="com.bookstore.entity.*"%>
 <html>
 <head>
 <link rel='stylesheet' href='MainBookStoreCss.css'>

@@ -1,13 +1,9 @@
-package com.online.bookstore;
+package com.bookstore.util;
 
 import java.sql.*;
 
 public class DatabaseConnectivity {
 	static Connection con;
-	static ResultSet rs;
-	static Statement st;
-	static int getResponse;
-
 	public static Connection dbConnection() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");

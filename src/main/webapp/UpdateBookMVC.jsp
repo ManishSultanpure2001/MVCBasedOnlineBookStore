@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.sql.*"%>
-<%@ page import="com.online.bookstore.DatabaseConnectivity"%>
+<%@ page import="com.bookstore.util.DatabaseConnectivity"%>
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -60,7 +60,7 @@
 			</ul>
 		</div>
 		<center>
-			<form action="BookUpdateServlet">
+			<form action="UpdateDataBaseBook">
 
 				<table cellpadding="15px">
 					<tr>
@@ -71,12 +71,13 @@
 
 								<%
 								ArrayList<String> list = (ArrayList) request.getAttribute("list");
+								System.out.print(list);
+								if(list!=null){
 								for (int i = 0; i < list.size(); i++) {
 								%>
-
 								<option><%=list.get(i)%></option>
 								<%
-								}
+								}}
 								%>
 						</select></td>
 
@@ -148,7 +149,6 @@
 						data = data.trim();
 						data = data.substring(1, data.length - 1);
 						var t = data.split(",");
-
 						document.getElementById("bookName").value = t[0];
 						document.getElementById("myImg").src = "Image/" + t[0]
 								+ ".png";

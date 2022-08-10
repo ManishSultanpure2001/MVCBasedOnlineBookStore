@@ -1,4 +1,4 @@
-package com.onlinebookstore.model;
+package com.bookstore.entity;
 
 import javax.mail.Part;
 

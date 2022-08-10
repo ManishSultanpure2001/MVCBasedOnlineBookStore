@@ -4,7 +4,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.io.FileInputStream"%>
 <%@ page import="java.sql.*"%>
-<%@ page import="com.online.bookstore.DatabaseConnectivity"%>
+<%@ page import="com.bookstore.util.DatabaseConnectivity"%>
 
 
 <!DOCTYPE html>
@@ -46,15 +46,15 @@
 					<td><select name="userSelectedIteam" onchange="demo()"
 						id="userComboSelectedValue">
 							<option>Select Book</option>
-
 							<%
 							ArrayList<String> list = (ArrayList) request.getAttribute("listData");
 							System.out.print(list);
+							if(list!=null){
 							for (int i = 0; i < list.size(); i++) {
 							%>
 							<option><%=list.get(i)%></option>
 							<%
-							}
+							}}
 							%>
 					</select></td>
 				</tr>

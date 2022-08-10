@@ -2,12 +2,12 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
    
      <servlet>
-        <servlet-name>RegistrationMVC</servlet-name>
-        <servlet-class>com.onlinebookstore.controller.RegistrationMVC</servlet-class>
+        <servlet-name>RegistrationController</servlet-name>
+        <servlet-class>com.onlinebookstore.controller.RegistrationController</servlet-class>
     </servlet>
      <servlet>
-        <servlet-name>UserLoginMVC</servlet-name>
-        <servlet-class>com.onlinebookstore.controller.UserLoginMVC</servlet-class>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>com.onlinebookstore.controller.LoginController</servlet-class>
     </servlet>
      <servlet>
         <servlet-name>AddBookController</servlet-name>
@@ -37,13 +37,21 @@
         <servlet-name>UserBuyHistoryServlet</servlet-name>
         <servlet-class>com.onlinebookstore.controller.UserBuyHistoryServlet</servlet-class>
     </servlet>
+     <servlet>
+        <servlet-name>UpdateDataBaseBook</servlet-name>
+        <servlet-class>com.onlinebookstore.controller.UpdateDataBaseBook</servlet-class>
+    </servlet>
+    <!--  <servlet>
+        <servlet-name>AjaxDataHandle</servlet-name>
+        <servlet-class>com.onlinebookstore.model.AjaxDataHandle</servlet-class>
+    </servlet> -->
    <servlet-mapping>
-        <servlet-name>RegistrationMVC</servlet-name>
-        <url-pattern>/RegistrationMVC</url-pattern>
+        <servlet-name>RegistrationController</servlet-name>
+        <url-pattern>/RegistrationController</url-pattern>
     </servlet-mapping>
    <servlet-mapping>
-        <servlet-name>UserLoginMVC</servlet-name>
-        <url-pattern>/UserLoginMVC</url-pattern>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/LoginController</url-pattern>
     </servlet-mapping>
    <servlet-mapping>
         <servlet-name>AddBookController</servlet-name>
@@ -73,6 +81,14 @@
         <servlet-name>UserBuyHistoryServlet</servlet-name>
         <url-pattern>/UserBuyHistoryServlet</url-pattern>
     </servlet-mapping>
+   <servlet-mapping>
+        <servlet-name>UpdateDataBaseBook</servlet-name>
+        <url-pattern>/UpdateDataBaseBook</url-pattern>
+    </servlet-mapping>
+   <!-- <servlet-mapping>
+        <servlet-name>AjaxDataHandle</servlet-name>
+        <url-pattern>/AjaxDataHandle</url-pattern>
+    </servlet-mapping> -->
    
     
 </web-app>

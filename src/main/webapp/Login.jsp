@@ -10,6 +10,12 @@
 <link rel="stylesheet" href="MainBookStoreCss.css" />
 </head>
 <body>
+<%if(request.getAttribute("successMsg")!=null) {%>
+<h1 style="color:green"><%=request.getAttribute("successMsg") %></h1>
+<%} %>
+<%if(request.getAttribute("errorMsg")!=null) {%>
+<h1 style="color:red"><%=request.getAttribute("errorMsg") %></h1>
+<%} %>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<div id="mymenu">
 		<ul>
@@ -21,7 +27,7 @@
 	<div id="data">
 
 		<center>
-			<form action="UserLoginMVC" method="post">
+			<form action="LoginController" method="post">
 				<table cellpadding="15px">
 					<tr>
 						<td>Enter email</td>

@@ -1,4 +1,4 @@
-package com.onlinebookstore.model;
+package com.bookstore.entity;
 
 public class UserEmail {
 	static String userEmail;

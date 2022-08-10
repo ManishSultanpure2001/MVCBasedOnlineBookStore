@@ -6,28 +6,14 @@
 <link rel="stylesheet" href="MainBookStoreCss.css">
 </head>
 <body>
-	<%
-	String output = request.getParameter("output");
-	if (output != null) {
-		if (output.equals("true")) {
-	%>
-	<div>
-		<h2 id="successHeading">
-			"Success Fully Book Deleted"
-			<h2>
-	</div>
-	<%
-	} else if (output.equals("false")) {
-	%>
-	<div>
-		<h2 id="failHeading">
-			"Try Again Book Not Deleted"
-			<h2>
-	</div>
-	<%
-	}
-	}
-	%>
+
+	
+	<%if(request.getAttribute("successMsg")!=null) {%>
+<h1 style="color:green"><%=request.getAttribute("successMsg") %></h1>
+<%} %>
+<%if(request.getAttribute("errorMsg")!=null) {%>
+<h1 style="color:red"><%=request.getAttribute("errorMsg") %></h1>
+<%} %>
 	<div id="data">
 		<center>
 			<h1 class="AddBookHeading">
