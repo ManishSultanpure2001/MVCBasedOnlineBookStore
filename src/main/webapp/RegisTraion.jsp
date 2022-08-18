@@ -7,6 +7,20 @@
 <link rel="stylesheet" href="MainBookStoreCss.css" />
 </head>
 <body>
+	<%
+	if (request.getAttribute("successMsg") != null) {
+	%>
+	<h1 style="color: green"><%=request.getAttribute("successMsg")%></h1>
+	<%
+	}
+	%>
+	<%
+	if (request.getAttribute("errorMsg") != null) {
+	%>
+	<h1 style="color: red"><%=request.getAttribute("errorMsg")%></h1>
+	<%
+	}
+	%>
 	<div id="mymenu">
 		<ul>
 			<li><a href="Login.jsp">Login</a></li>

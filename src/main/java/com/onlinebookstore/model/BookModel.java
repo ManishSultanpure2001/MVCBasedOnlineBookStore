@@ -14,9 +14,14 @@ import javax.mail.MessagingException;
 
 import com.bookstore.entity.BookdetailsDao;
 import com.bookstore.util.DatabaseConnectivity;
+import com.mysql.cj.x.protobuf.MysqlxCrud.Update;
 import com.bookstore.entity.Book;
 
 public class BookModel {
+	static PreparedStatement preparedStatement;
+	static ResultSet rs;
+	static Connection con;
+	static String queryString;
 
 	/************* Add Book Logic *********************/
 
@@ -29,10 +34,10 @@ public class BookModel {
 
 	public boolean addBook(BookdetailsDao bookdetailsDao) {
 		this.bookdetailsDao = bookdetailsDao;
-		String queryString = "Insert into bookdetails values(?,?,?,?,?)";
+		queryString = "Insert into bookdetails values(?,?,?,?,?)";
 
 		try (Connection con = DatabaseConnectivity.dbConnection();) {
-			PreparedStatement preparedStatement = con.prepareStatement(queryString);
+			preparedStatement = con.prepareStatement(queryString);
 			preparedStatement.setString(1, bookdetailsDao.getBookName());
 			preparedStatement.setString(2, bookdetailsDao.getBookName() + ".pdf");
 			preparedStatement.setString(3, bookdetailsDao.getBookName() + ".png");
@@ -82,12 +87,12 @@ public class BookModel {
 	public static ArrayList<Book> viewBook() {
 		ArrayList<Book> list = new ArrayList<>();
 
-		String queryString = "Select * from bookdetails";
+		queryString = "Select * from bookdetails";
 
 		try (Connection con = DatabaseConnectivity.dbConnection();) {
 
-			PreparedStatement preparedStatement = con.prepareStatement(queryString);
-			ResultSet rs = preparedStatement.executeQuery();
+			preparedStatement = con.prepareStatement(queryString);
+			rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
 				Book bDao = new Book();
@@ -105,34 +110,35 @@ public class BookModel {
 		}
 		return list;
 	}
-	
-	
-	/****************Update Book****************/
+
+	/**************** Update Book ****************/
+
+	/* Available Book Name List */
 	public static ArrayList<String> updateBook() {
 
 		ArrayList<String> arrayList = new ArrayList<>();
-		String queryString = "Select DISTINCT bookname from bookdetails";
-		int i = 0;
+		queryString = "Select DISTINCT bookname from bookdetails";
 		try (Connection con = DatabaseConnectivity.dbConnection();) {
 			arrayList.clear();
-			PreparedStatement preparedStatement = con.prepareStatement(queryString);
-			ResultSet rs = preparedStatement.executeQuery();
+			preparedStatement = con.prepareStatement(queryString);
+			rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				arrayList.add(rs.getString(1));
 			}
-			
+
 		} catch (SQLException e) {
-		
+
 			e.printStackTrace();
 		}
 		return arrayList;
 	}
-	
+
+	/* Update selected Book from ComboBox */
 	public static boolean updateBookDatabases(Book book) {
-		String queryString = "UPDATE bookdetails SET  bookname=? ,bookpdf=? , pic=? ,bookprice=? , authorname=?  WHERE  bookname=?";
+		queryString = "UPDATE bookdetails SET  bookname=? ,bookpdf=? , pic=? ,bookprice=? , authorname=?  WHERE  bookname=?";
 		try {
-			Connection con = DatabaseConnectivity.dbConnection();
-			PreparedStatement preparedStatement = con.prepareStatement(queryString);
+			con = DatabaseConnectivity.dbConnection();
+			preparedStatement = con.prepareStatement(queryString);
 			preparedStatement.setString(1, book.getBookName());
 			preparedStatement.setString(2, book.getBookPDF());
 			preparedStatement.setString(3, book.getBookImage());
@@ -141,8 +147,8 @@ public class BookModel {
 			preparedStatement.setString(6, book.getSelectedItem());
 			int insertResponse = preparedStatement.executeUpdate();
 			if (insertResponse > 0) {
-					return true;	
-			} 
+				return true;
+			}
 			con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -150,21 +156,20 @@ public class BookModel {
 		return false;
 
 	}
-	
-	
-	/********Delete Boook *******/
+
+	/******** Delete Boook *******/
 	public static boolean deleteBook(BookdetailsDao bDao) {
 
-		String queryString = "DELETE FROM bookdetails WHERE bookname=? and authorName=?";
+		queryString = "DELETE FROM bookdetails WHERE bookname=? and authorName=?";
 
 		try (Connection con = DatabaseConnectivity.dbConnection();) {
 
-			PreparedStatement preparedStatement = con.prepareStatement(queryString);
+			preparedStatement = con.prepareStatement(queryString);
 			preparedStatement.setString(1, bDao.getBookName());
 			preparedStatement.setString(2, bDao.getAuthorName());
 
-			int responceGet = preparedStatement.executeUpdate();
-			if (responceGet > 0) {
+			int getResponse = preparedStatement.executeUpdate();
+			if (getResponse > 0) {
 				File image = new File(
 						"C:\\Users\\salon\\Documents\\workspace-spring-tool-suite-4-4.15.1.RELEASE\\MVCBasedOnlineBookStore\\src\\main\\webapp\\Image\\"
 								+ bDao.getBookName() + ".png");
@@ -172,17 +177,15 @@ public class BookModel {
 						"C:\\Users\\salon\\Documents\\workspace-spring-tool-suite-4-4.15.1.RELEASE\\MVCBasedOnlineBookStore\\src\\main\\webapp\\PDF\\"
 								+ bDao.getBookName() + ".pdf");
 				if (image.delete() && pdf.delete()) {
-				return true;
+					return true;
 				}
 			}
-			
-			
 
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
-		
+
 		return false;
 	}
 }

@@ -72,12 +72,13 @@
 								<%
 								ArrayList<String> list = (ArrayList) request.getAttribute("list");
 								System.out.print(list);
-								if(list!=null){
-								for (int i = 0; i < list.size(); i++) {
+								if (list != null) {
+									for (int i = 0; i < list.size(); i++) {
 								%>
 								<option><%=list.get(i)%></option>
 								<%
-								}}
+								}
+								}
 								%>
 						</select></td>
 
@@ -135,8 +136,7 @@
 	function demo() {
 
 		var id = document.getElementById('comboSelectedValue').value;
-		$
-				.ajax({
+		$.ajax({
 
 					type : "GET",
 					url : "Edit_returnAjax.jsp",

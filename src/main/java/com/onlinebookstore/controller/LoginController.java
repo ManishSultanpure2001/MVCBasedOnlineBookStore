@@ -1,21 +1,16 @@
 package com.onlinebookstore.controller;
 
+/* This class is responsible to get User Details from Login.jsp Page
+ * and Authenticate from Database on the basis of 
+ * Input field Data from Login.jsp page*/
+
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import java.sql.*;
-
 import com.bookstore.entity.RegistrationDao;
-import com.bookstore.util.*;
 import com.onlinebookstore.model.Authontication;
-
-/**
- * Servlet implementation class UserLoginMVC
- */
 
 public class LoginController extends HttpServlet {
 
@@ -29,18 +24,19 @@ public class LoginController extends HttpServlet {
 
 		String responString = authontication.login(registrationDao);
 		if (registrationDao != null) {
-			System.out.print("come");
+			/* if login() Method return Admin in responString */
 			if (responString.equals("Admin")) {
 				request.setAttribute("userEmail", registrationDao.getUserEmail());
 				request.getRequestDispatcher("AdminHome.jsp").forward(request, response);
-			} else if (responString.equals("User")) {
+			}
+			/* if login() Method return User in responString */
+			else if (responString.equals("User")) {
 
 				request.setAttribute("userEmail", registrationDao.getUserEmail());
 				request.getRequestDispatcher("UserHomeProfile.jsp").forward(request, response);
 			}
 		} else {
-			System.out.print("Not come");
-			request.setAttribute("errorMsg", "Not Registation SuccessFull");
+			request.setAttribute("errorMsg", "Registation Not SuccessFull");
 			request.getRequestDispatcher("Login.jsp").forward(request, response);
 		}
 

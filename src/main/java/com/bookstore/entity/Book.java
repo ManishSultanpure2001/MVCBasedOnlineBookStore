@@ -1,6 +1,8 @@
 package com.bookstore.entity;
 
-import javax.management.loading.PrivateClassLoader;
+/*This entity class is created for get and set
+ * all the details related to Book*/
+
 
 public class Book {
 	private String bookName, bookPDF, bookImage, bookPrice, bookAuthor;

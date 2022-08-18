@@ -10,13 +10,17 @@ import com.bookstore.util.EmailService;
 import com.bookstore.entity.UserEmail;
 
 public class Authontication {
+	Connection con;
+	PreparedStatement preparedStatement;
+	Statement st;
 
-	/************Registration Logic************/
+	/************ Registration Logic ************/
+
 	public boolean registration(RegistrationDao dao) {
-		String queryString = "Insert into registration values(?,?,?,?)";
+		// String queryString = "Insert into registration values(?,?,?,?)";
 		try {
-			Connection con = DatabaseConnectivity.dbConnection();
-			PreparedStatement preparedStatement = con.prepareStatement(queryString);
+			con = DatabaseConnectivity.dbConnection();
+			preparedStatement = con.prepareStatement("Insert into registration values(?,?,?,?)");
 			preparedStatement.setString(1, dao.getUserName());
 			preparedStatement.setString(2, dao.getUserEmail());
 			preparedStatement.setString(3, dao.getUserRole());
@@ -26,33 +30,30 @@ public class Authontication {
 				EmailService.emailSend("Dear [" + dao.getUserName()
 						+ "]Thank you for completing your registration with [Webkorps]This email serves as a confirmation that your account is activated and that you are officially a part of the [Online Book Store] family Enjoy",
 						dao.getUserEmail());
-				System.out.print("Success");
 				return true;
 			}
 			con.close();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		return false;
 	}
-	
-	/*********************Login Logic********************/
-	
+
+	/********************* Login Logic ********************/
+
 	public String login(RegistrationDao dao) {
 		try {
-			Connection con = DatabaseConnectivity.dbConnection();
-			Statement st = con.createStatement();
+			con = DatabaseConnectivity.dbConnection();
+			st = con.createStatement();
 			ResultSet rs = st.executeQuery("Select * from registration where email='" + dao.getUserEmail()
 					+ "' and password='" + dao.getUserPassword() + "'");
 
 			if (rs.next()) {
-
-				
 				if (rs.getString(2).equals(dao.getUserEmail()) && rs.getString(3).equals("Admin")
 						&& rs.getString(4).equals(dao.getUserPassword())) {
-						return "Admin";
+					return "Admin";
 				} else {
 					UserEmail userEmail2 = new UserEmail();
 					userEmail2.setUserEmail(dao.getUserEmail());
@@ -63,7 +64,7 @@ public class Authontication {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return "null";
 	}
 

@@ -1,6 +1,9 @@
 package com.bookstore.entity;
 
-import javax.mail.Part;
+/*This entity class is created for get and set
+ *all the details related to Book At the time of Add book .
+ *and update book Operation 
+ * */
 
 public class BookdetailsDao {
 	private String bookName, bookPrice, authorName;

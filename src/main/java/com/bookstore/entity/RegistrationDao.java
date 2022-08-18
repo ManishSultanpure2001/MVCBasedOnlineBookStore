@@ -1,5 +1,9 @@
 package com.bookstore.entity;
 
+/*This entity class is created for get and set
+ * all the details related to User And Admin
+ * Registration and Login Details*/
+
 public class RegistrationDao {
 	private String userName, userEmail, userRole, userPassword;
 

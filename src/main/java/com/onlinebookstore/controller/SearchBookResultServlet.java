@@ -1,4 +1,9 @@
 package com.onlinebookstore.controller;
+
+/* This is responsible to Searched Book Available or not 
+ * on the bases of input from SearchBookResult.jsp Page 
+ * and set in all Books in comboBox */
+
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -18,11 +23,14 @@ public class SearchBookResultServlet extends HttpServlet {
 		BookdetailsDao book = new BookdetailsDao();
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		book.setBookName(request.getParameter("bookName"));
-		ArrayList list=UserModel.searchBook(book);
-		if((boolean) list.get(1)) {
-		request.setAttribute("bookDetails", list.get(0));
-		request.getRequestDispatcher("SearchBookResult.jsp").forward(request, response);
-		}else {
+		ArrayList list = UserModel.searchBook(book);
+
+		/* searchBook() return list of Available books */
+
+		if ((boolean) list.get(1)) {
+			request.setAttribute("bookDetails", list.get(0));
+			request.getRequestDispatcher("SearchBookResult.jsp").forward(request, response);
+		} else {
 			String output = "false";
 			response.sendRedirect("SearchBuyBook.jsp?output=false");
 		}

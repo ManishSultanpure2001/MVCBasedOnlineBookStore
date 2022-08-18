@@ -1,8 +1,8 @@
 package com.bookstore.util;
+
+/*This class is responsible to Send Email to User */
+
 import java.io.File;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -13,18 +13,16 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import com.bookstore.util.DatabaseConnectivity;
-import com.onlinebookstore.model.BookModel;
-import com.bookstore.entity.RegistrationDao;
+import org.eclipse.jdt.internal.compiler.ast.ThisReference;
+import org.junit.Test;
 
 public class EmailService extends HttpServlet {
-
+	
+	/* This is responsible to get and send the message and User Email 
+	 * to  sendAttachment() method*/
+	
 	public static void emailSend(String message, String userEmail) {
 		System.out.println("Preparing to send message");
 
@@ -32,7 +30,9 @@ public class EmailService extends HttpServlet {
 		String from = "manishsultanpure538@gmail.com";
 		sendAttachment(message, subject, userEmail, from);
 
-	} // This is responsible to send the message with attachment
+	} 
+	
+	/* This is responsible to send the message with attachment */
 
 	private static void sendAttachment(String message, String subject, String to, String from) {
 		// Variable for gmail.
@@ -43,11 +43,11 @@ public class EmailService extends HttpServlet {
 
 		// host set
 		properties.put("mail.smtp.host", host);
-		properties.put("mail.smtp.port", "465");// 465 is default port number of g
+		properties.put("mail.smtp.port", "465");// 465 is default port number of google
 		properties.put("mail.smtp.ssl.enable", "true");
 		properties.put("mail.smtp.auth", "true");
 
-		// Step 1:- to get the session Object
+		//to get the session Object
 		Session session = Session.getInstance(properties, new Authenticator() {
 
 			@Override
@@ -57,7 +57,7 @@ public class EmailService extends HttpServlet {
 		});
 		session.setDebug(true);
 
-		// Step 2:- Compose the message
+		//Compose the message
 		try {
 			MimeMessage mimeMessage = new MimeMessage(session); // from email
 			mimeMessage.setFrom("manishsultanpure538@gmail.com"); // Adding resipient to message
@@ -83,14 +83,14 @@ public class EmailService extends HttpServlet {
 				mimeMultipart.addBodyPart(fileMime);
 
 			} catch (Exception e) {
-				
+
 				e.printStackTrace();
 			}
 			mimeMessage.setContent(mimeMultipart);
-			// Step 3:- Send the message using Transport Class
+			//Send the message using Transport Class
 			Transport.send(mimeMessage);
 			System.out.println("Success Fully Send");
-		} catch (Exception e) { 
+		} catch (Exception e) {
 			e.printStackTrace();
 
 		}

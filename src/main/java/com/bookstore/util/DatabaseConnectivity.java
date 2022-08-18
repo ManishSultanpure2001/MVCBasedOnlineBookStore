@@ -1,6 +1,9 @@
 package com.bookstore.util;
 
+/*DataBase Connectivity Code for return the Connection object  */
+
 import java.sql.*;
+
 
 public class DatabaseConnectivity {
 	static Connection con;
